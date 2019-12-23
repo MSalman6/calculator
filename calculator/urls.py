@@ -19,7 +19,7 @@ from calcapp import views
 
 urlpatterns = [
 	path('', views.index, name='index'),
+    # end point for calculator api
 	path('calculator/', views.calculator),
     path('admin/', admin.site.urls),
-    path('ajax/', views.ajaxview)
 ]

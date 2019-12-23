@@ -1,9 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'calcapp/style.css' %}">
+
 <html>
 <head>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+   <title>Calculator</title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <script>
+      
       $(document).on('submit', '#form1', function(e){
             e.preventDefault();
 
@@ -12,30 +16,33 @@
                        url: "http://127.0.0.1:8000/calculator/",
                        data:{'test': document.getElementById("result").value,
                        csrfmiddlewaretoken:('input[name=csrfmiddlewaretoken]')},
+                   }).success(function(data){
+                     $('#msg').html(data);
+                   }).fail(function(){
+                     $('#msg').html('Syntax Error');
                    });
                 });
-   </script>
-      <script>
       function display(val)
          {
              document.getElementById("result").value+=val
          }
-         function solve()
+      function back() 
          {
-             let x = document.getElementById("result").value
-             let y = eval(x)
-             document.getElementById("result").value = y
+            var value = document.getElementById("result").value;
+            document.getElementById("result").value = value.substr(0, value.length - 1);
          }
          function clr()
          {
              document.getElementById("result").value = ""
          }
-         submitForm = function(){
-         document.getElementById("form1").submit();
-         }
       </script>
 
       <style>
+      .title{ 
+         margin-bottom: 10px; 
+         text-align:center; 
+         width: 210px;
+         } 
       .btn {
          background-color:grey; 
          color: black; 
@@ -45,7 +52,7 @@
       }
       input[type="button"]
       {
-         background-color:grey; 
+         background-color: grey; 
          color: black; 
          border: solid black 2px; 
          width:100px;
@@ -61,30 +68,27 @@
 </head>
 <center>
 <body>
-   <h1>Calculator</h1>
-   <table>
-      <tr>
-         <tr><form id="form1">
-            {% csrf_token %}
-            <input type="text" style="width:22%;height:70px;text-align: right" id="result" name="test" value={{res}}>
-            <button type="submit">submit</button>
-         </tr>
-         </form><br>
-         <tr><input type="text" style="width:22%;height:30px;text-align: right" id="result" name="test" value={{res}}></tr>
-      </tr>
-   </table>
-   <table border="0px">
+   <h1 class="title">Calculator</h1>
+         <table style="border: solid black 1px">
          <tr>
-            <td><input type="button" value="Add"></td>
-            <td><input type="button" value="Sub"></td>
-            <td><input type="button" value="Mul"></td>
+            <form id="form1">
+            {% csrf_token %}
+            <td colspan="4"><input type="text" id="result" name="test" style="font-size:20px;height:50px;text-align: right"/></td></form><br>
+         </tr>
+         <tr>
+            <td colspan="4"><div id="msg" type="text" style="font-size:30px;text-align: right"></div></td>
+            </tr>
+         <tr>
+            <td><input type="button" value="(" onclick="display('(')"></td>
+            <td><input type="button" value=")" onclick="display(')')"></td>
+            <td><input type="button" value="pow" onclick="display('**')"></td>
             <td><input type="button" value="AC" onclick="clr()"></td>
          </tr>
          <tr>
-            <td><input type="button" value="Sin"></td>
-            <td><input type="button" value="Tan"></td>
-            <td><input type="button" value="Cos"></td>
-            <td><input type="button" value="<-" onclick="rmv()"></td>
+            <td><input type="button" value="sin" onclick="display('sin(')"></td>
+            <td><input type="button" value="cos" onclick="display('cos(')"></td>
+            <td><input type="button" value="tan" onclick="display('tan(')"></td>
+            <td><input type="button" value="DEL" onclick="back()"></td>
          </tr>
          <tr>
             <td><input type="button" value="1" onclick="display('1')"/></td>
@@ -107,7 +111,7 @@
          <tr>
             <td><input type="button" value="0" onclick="display('0')"/></td>
             <td><input type="button" value="." onclick="display('.')"/></td>
-            <td><input type="button" value="=" onclick="submitForm()"/></td>
+            <td><button class="btn" type="submit" form="form1">=</button></td>
             <td><input type="button" value="+" onclick="display('+')"/></td>
          </tr>
       </table>

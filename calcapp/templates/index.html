@@ -13,7 +13,7 @@
 
                       $.ajax({
                        type: "POST",
-                       url: "http://127.0.0.1:8000/calculator/",
+                       url: "calculator/",
                        data:{'test': document.getElementById("result").value,
                        csrfmiddlewaretoken:('input[name=csrfmiddlewaretoken]')},
                    }).success(function(data){

@@ -6,8 +6,7 @@
 <head>
    <title>Calculator</title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-   <script>
-      
+   <script>    
       $(document).on('submit', '#form1', function(e){
             e.preventDefault();
 
@@ -36,35 +35,6 @@
              document.getElementById("result").value = ""
          }
       </script>
-
-      <style>
-      .title{ 
-         margin-bottom: 10px; 
-         text-align:center; 
-         width: 210px;
-         } 
-      .btn {
-         background-color:grey; 
-         color: black; 
-         border: solid black 2px; 
-         width:100px;
-         height:70px;
-      }
-      input[type="button"]
-      {
-         background-color: grey; 
-         color: black; 
-         border: solid black 2px; 
-         width:100px;
-         height:70px;
-      }
-         input[type="text"] 
-         { 
-         background-color:white; 
-         border: solid black .1px; 
-         width:100%
-         }
-    </style>
 </head>
 <center>
 <body>
@@ -79,40 +49,40 @@
             <td colspan="4"><div id="msg" type="text" style="font-size:30px;text-align: right"></div></td>
             </tr>
          <tr>
-            <td><input type="button" value="(" onclick="display('(')"></td>
-            <td><input type="button" value=")" onclick="display(')')"></td>
-            <td><input type="button" value="pow" onclick="display('**')"></td>
-            <td><input type="button" value="AC" onclick="clr()"></td>
+            <td><input class="btn" type="button" value="(" onclick="display('(')"></td>
+            <td><input class="btn" type="button" value=")" onclick="display(')')"></td>
+            <td><input class="btn" type="button" value="pow" onclick="display('**')"></td>
+            <td><input class="btn" type="button" value="AC" onclick="clr()"></td>
          </tr>
          <tr>
-            <td><input type="button" value="sin" onclick="display('sin(')"></td>
-            <td><input type="button" value="cos" onclick="display('cos(')"></td>
-            <td><input type="button" value="tan" onclick="display('tan(')"></td>
-            <td><input type="button" value="DEL" onclick="back()"></td>
+            <td><input class="btn" type="button" value="sin" onclick="display('sin(')"></td>
+            <td><input class="btn" type="button" value="cos" onclick="display('cos(')"></td>
+            <td><input class="btn" type="button" value="tan" onclick="display('tan(')"></td>
+            <td><input class="btn" type="button" value="DEL" onclick="back()"></td>
          </tr>
          <tr>
-            <td><input type="button" value="1" onclick="display('1')"/></td>
-            <td><input type="button" value="2" onclick="display('2')"/></td>
-            <td><input type="button" value="3" onclick="display('3')"/></td>
-            <td><input type="button" value="/" onclick="display('/')"/></td>
+            <td><input class="btn" type="button" value="1" onclick="display('1')"/></td>
+            <td><input class="btn" type="button" value="2" onclick="display('2')"/></td>
+            <td><input class="btn" type="button" value="3" onclick="display('3')"/></td>
+            <td><input class="btn" type="button" value="/" onclick="display('/')"/></td>
          </tr>
          <tr>
-            <td><input type="button" value="4" onclick="display('4')"/></td>
-            <td><input type="button" value="5" onclick="display('5')"/></td>
-            <td><input type="button" value="6" onclick="display('6')"/></td>
-            <td><input type="button" value="*" onclick="display('*')"/></td>
+            <td><input class="btn" type="button" value="4" onclick="display('4')"/></td>
+            <td><input class="btn" type="button" value="5" onclick="display('5')"/></td>
+            <td><input class="btn" type="button" value="6" onclick="display('6')"/></td>
+            <td><input class="btn" type="button" value="*" onclick="display('*')"/></td>
          </tr>
          <tr>
-            <td><input type="button" value="7" onclick="display('7')"/></td>
-            <td><input type="button" value="8" onclick="display('8')"/></td>
-            <td><input type="button" value="9" onclick="display('9')"/></td>
-            <td><input type="button" value="-" onclick="display('-')"/></td>
+            <td><input class="btn" type="button" value="7" onclick="display('7')"/></td>
+            <td><input class="btn" type="button" value="8" onclick="display('8')"/></td>
+            <td><input class="btn" type="button" value="9" onclick="display('9')"/></td>
+            <td><input class="btn" type="button" value="-" onclick="display('-')"/></td>
          </tr>
          <tr>
-            <td><input type="button" value="0" onclick="display('0')"/></td>
-            <td><input type="button" value="." onclick="display('.')"/></td>
+            <td><input class="btn" type="button" value="0" onclick="display('0')"/></td>
+            <td><input class="btn" type="button" value="." onclick="display('.')"/></td>
             <td><button class="btn" type="submit" form="form1">=</button></td>
-            <td><input type="button" value="+" onclick="display('+')"/></td>
+            <td><input class="btn" type="button" value="+" onclick="display('+')"/></td>
          </tr>
       </table>
 </body>

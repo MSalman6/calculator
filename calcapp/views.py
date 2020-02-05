@@ -11,6 +11,6 @@ def index(request):
 
 @api_view(['GET', 'POST'])
 def calculator(request):
-		r = request.POST['test']
+		r = request.POST['input']
 		data = eval(r)
 		return HttpResponse(data)
